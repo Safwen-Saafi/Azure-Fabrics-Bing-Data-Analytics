@@ -1,0 +1,21 @@
+Mixed Sentiment % = 
+IF (
+    COUNTROWS(
+        FILTER(
+            'tbl_sentiment_analysis',
+            'tbl_sentiment_analysis'[sentiment] = "mixed"
+        )
+    ) > 0,
+    DIVIDE(
+        CALCULATE(
+            COUNTROWS(
+                FILTER(
+                    'tbl_sentiment_analysis',
+                    'tbl_sentiment_analysis'[sentiment] = "mixed"
+                )
+            )
+        ),
+        COUNTROWS('tbl_sentiment_analysis')
+    ) * 100,
+    0
+)

@@ -1,0 +1,21 @@
+Positive Sentiment % = 
+IF (
+    COUNTROWS(
+        FILTER(
+            'tbl_sentiment_analysis',
+            'tbl_sentiment_analysis'[sentiment] = "positive"
+        )
+    ) > 0,
+    DIVIDE(
+        CALCULATE(
+            COUNTROWS(
+                FILTER(
+                    'tbl_sentiment_analysis',
+                    'tbl_sentiment_analysis'[sentiment] = "positive"
+                )
+            )
+        ),
+        COUNTROWS('tbl_sentiment_analysis')
+    ) * 100,
+    0
+)
